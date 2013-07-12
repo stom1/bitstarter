@@ -1,9 +1,12 @@
 var express = require('express');
-
+var fs = require ('fs');
+var filename = "index.html";
+var buffer = new Buffer(16);
+buffer = fs.readFileSync(filename);
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send('Hello World 2');
+  response.send(buffer.toString("utf-8"));
 
 });
 
